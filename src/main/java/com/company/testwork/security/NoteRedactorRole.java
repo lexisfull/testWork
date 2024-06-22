@@ -13,11 +13,12 @@ import io.jmix.securityflowui.role.annotation.ViewPolicy;
 public interface NoteRedactorRole {
     String CODE = "note-redactor";
 
-    @EntityAttributePolicy(entityClass = Note.class, attributes = {"text", "name", "owner", "id", "*"}, action = EntityAttributePolicyAction.MODIFY)
+    @EntityAttributePolicy(entityClass = Note.class, attributes = "id", action = EntityAttributePolicyAction.VIEW)
+    @EntityAttributePolicy(entityClass = Note.class, attributes = {"owner", "name", "text"}, action = EntityAttributePolicyAction.MODIFY)
     @EntityPolicy(entityClass = Note.class, actions = EntityPolicyAction.ALL)
     void note();
 
     @MenuPolicy(menuIds = "Note.list")
-    @ViewPolicy(viewIds = {"Note.list", "Note.detail"})
+    @ViewPolicy(viewIds = {"Note.list", "Note.detail", "User.detail"})
     void screens();
 }

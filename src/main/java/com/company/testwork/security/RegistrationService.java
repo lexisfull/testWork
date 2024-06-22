@@ -11,6 +11,7 @@ public class RegistrationService {
 
     private final UnconstrainedDataManager unconstrainedDataManager;
 
+
     public RegistrationService(UnconstrainedDataManager unconstrainedDataManager) {
         this.unconstrainedDataManager = unconstrainedDataManager;
     }
@@ -18,9 +19,10 @@ public class RegistrationService {
     public void register(User user) {
         RoleAssignmentEntity roleAssignment = unconstrainedDataManager.create(RoleAssignmentEntity.class);
         roleAssignment.setUsername(user.getUsername());
-        roleAssignment.setRoleCode(UiMinimalRole.CODE);
+        roleAssignment.setRoleCode(MinimalRedactorRole.CODE);
         roleAssignment.setRoleType(RoleAssignmentRoleType.RESOURCE);
 
         unconstrainedDataManager.save(user, roleAssignment);
+
     }
 }

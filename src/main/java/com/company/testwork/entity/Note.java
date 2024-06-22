@@ -25,7 +25,7 @@ public class Note {
 
     @JoinColumn(name = "OWNER_ID")
     @ManyToOne(fetch = FetchType.LAZY)
-    private User owner;
+    private User user;
 
     public String getText() {
         return text;
@@ -35,12 +35,12 @@ public class Note {
         this.text = text;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public User getOwner() {
-        return owner;
+    public User getUser() {
+        return user;
     }
 
     public String getName() {
